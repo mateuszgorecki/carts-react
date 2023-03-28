@@ -3,7 +3,7 @@ import RootLayout from './components/RootLayout'
 import ErrorPage from './pages/Error'
 import AllCharts from './components/AllCarts'
 import AddCart from './components/AddCart'
-import SingleCart from './components/SingleCart'
+import CartDetails from './components/CartDetails'
 import WelcomePage from './pages/Welcome'
 import CartsProvider from './context/CartsProvider'
 
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/all-carts/:cartId',
-        element: <SingleCart />,
+        element: <CartDetails />,
       },
       {
         path: '*',

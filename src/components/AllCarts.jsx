@@ -1,42 +1,31 @@
-import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import CartsContext from '../context/carts-context'
 import LayoutWrapper from './LayoutWrapper'
+import SingleItem from './SingleItem'
 
 import styles from '../styles/AllCarts.module.scss'
 
-
 const AllCharts = () => {
-  const [carts, setCarts] = useState([])
+  const ctx = useContext(CartsContext)
 
-  useEffect(() => {
-    const fetchCarts = async () => {
-      const res = await fetch('https://dummyjson.com/carts')
-      const data = await res.json()
-      console.log(data.carts)
-      setCarts(data.carts)
-    }
+  const { carts } = ctx
 
-    fetchCarts()
-  }, [])
+  const deleteCartHandler = (id) => {
+    ctx.deleteCart(id)
+  }
 
   const renderCarts = () => {
     return carts.map((cart) => {
       return (
-        <li
-          className={styles.item}
+        <SingleItem
           key={cart.id}
-        >
-          <NavLink to={`/all-carts/${cart.id}`}>
-            <p className={styles.title}>Cart no. {cart.id}</p>
-            <p>Price: {cart.total}</p>
-            <p>Price after discount: {cart.discountedTotal}</p>
-            <p>Different products: {cart.totalProducts}</p>
-            <p>Total items: {cart.totalQuantity}</p>
-          </NavLink>
-          <button>
-            <span>&#x02010;</span>
-          </button>
-        </li>
+          id={cart.id}
+          total={cart.total}
+          discountedTotal={cart.discountedTotal}
+          totalProducts={cart.totalProducts}
+          totalQuantity={cart.totalQuantity}
+          deleteCart={deleteCartHandler}
+        />
       )
     })
   }

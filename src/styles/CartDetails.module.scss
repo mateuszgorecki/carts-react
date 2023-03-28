@@ -1,0 +1,44 @@
+@import './colors';
+
+.wrapper {
+  padding: 1.2rem
+}
+
+.container {
+  display: flex;
+  width: 800px;
+
+  .left {
+    width: 50%;
+    height: 100%;
+
+    .cart-info {
+      height: 200px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 1.2rem;
+      border-bottom: 1px solid $dark_green;
+
+      h1 {
+        width: 100%;
+        text-align: center;
+      }
+
+      div:last-child p {
+        text-align: end;
+      }
+    }
+
+    .items {
+      height: 300px;
+      overflow-y: scroll;
+    }
+  }
+
+  .right {
+    width: 50%;
+    background-color: $dark_green;
+  }
+}

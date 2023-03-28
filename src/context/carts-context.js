@@ -2,7 +2,7 @@ import React from 'react'
 
 const CartsContext = React.createContext({
   carts: [],
-  deleteCart: () => { },
+  deleteCart: (id) => { },
   addCart: () => { },
 })
 

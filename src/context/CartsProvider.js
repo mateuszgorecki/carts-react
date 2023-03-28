@@ -8,15 +8,20 @@ const CartsProvider = (props) => {
     const fetchCarts = async () => {
       const res = await fetch('https://dummyjson.com/carts')
       const data = await res.json()
-      console.log(data)
+      // console.log(data)
       setCarts(data.carts)
     }
     fetchCarts()
   }, [])
 
-  const addCartHandler = () => {}
+  const addCartHandler = (item) => {
+    setCarts([...carts, item])
+  }
 
-  const deleteCartHandler = (id) => {}
+  const deleteCartHandler = (id) => {
+    setCarts(carts.filter((cart) => cart.id !== id))
+    console.log('newcarts', carts)
+  }
 
   const cartContext = {
     carts: carts,

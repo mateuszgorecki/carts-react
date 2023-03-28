@@ -1,0 +1,51 @@
+@import './colors.scss';
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid $light_gray;
+
+  a {
+    text-decoration: none;
+    color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      line-height: 100%;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 1.2rem;
+    }
+  }
+
+  button {
+    border-radius: 50%;
+    border: 1px solid $red;
+    color: $red;
+    background-color: $bg_red;
+    width: 1.2rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    line-height: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+    }
+  }
+}
