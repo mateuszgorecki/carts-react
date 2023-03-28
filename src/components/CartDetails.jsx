@@ -18,7 +18,6 @@ const SingleCart = () => {
     total,
     totalProducts,
     totalQuantity,
-    userId,
   } = cart
 
   return (

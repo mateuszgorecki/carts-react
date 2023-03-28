@@ -15,7 +15,6 @@ const SingleItem = (props) => {
   return (
     <li
       className={styles.item}
-      key={id}
     >
       <NavLink to={`/all-carts/${id}`}>
         <p className={title}>Cart no. {id}</p>
