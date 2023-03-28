@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import RootLayout from './components/RootLayout'
+import ErrorPage from './pages/Error'
+import AllCharts from './components/AllCarts'
+import AddCart from './components/AddCart'
+import SingleCart from './components/SingleCart'
+import WelcomePage from './pages/Welcome'
+import CartsProvider from './context/CartsProvider'
+
+import styles from './styles/App.module.scss'
+import './styles/global.scss'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <WelcomePage />,
+      },
+      {
+        path: '/all-carts',
+        element: <AllCharts />,
+      },
+
+      {
+        path: '/add-cart',
+        element: <AddCart />,
+      },
+      {
+        path: '/all-carts/:cartId',
+        element: <SingleCart />,
+      },
+      {
+        path: '*',
+        element: <ErrorPage />,
+      },
+    ],
+  },
+])
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <CartsProvider>
+      <div className={styles.app}>
+        <RouterProvider router={router} />
+      </div>
+    </CartsProvider>
+  )
 }
 
-export default App;
+export default App

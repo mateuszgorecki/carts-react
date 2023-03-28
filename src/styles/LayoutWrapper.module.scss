@@ -1,0 +1,15 @@
+@import './colors.scss';
+
+.wrapper {
+  border-radius: 5px;
+  border: 1px solid $dark_green;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 70vh;
+  overflow: hidden;
+}
