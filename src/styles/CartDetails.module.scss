@@ -6,10 +6,12 @@
 
 .container {
   display: flex;
-  width: 800px;
+  width: 1200px;
+  justify-content: center;
+  gap: 1.2rem;
 
   .left {
-    width: 50%;
+    width: 48%;
     height: 100%;
 
     .cart-info {
@@ -34,11 +36,30 @@
     .items {
       height: 300px;
       overflow-y: scroll;
+      padding: 0;
+      width: 100%;
+      list-style: none;
+
+      li {
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px;
+        margin: 10px 5px;
+        border: 1px solid $black;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      div:first-child {
+        width: 70%;
+      }
     }
   }
 
   .right {
-    width: 50%;
+    width: 48%;
     background-color: $dark_green;
   }
 }

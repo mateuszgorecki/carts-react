@@ -43,10 +43,16 @@ const SingleCart = () => {
             {products.map((product) => {
               return (
                 <li key={product.id}>
-                  <p>{product.title}</p>
-                  <p>Price: {product.price}</p>
-                  <p>Quantity: {product.quantity}</p>
-                  <p>Total price: {product.total}</p>
+                  <div>
+                    <p>{product.title}</p>
+                    <p>
+                      {product.price} x {product.quantity}: {product.total}
+                    </p>
+                  </div>
+                  <div>
+                    <p>Discount: {product.discountPercentage}%</p>
+                    <p>Summary: {product.discountedPrice}</p>
+                  </div>
                 </li>
               )
             })}
