@@ -6,13 +6,19 @@ const Header = () => {
     <header className={styles.header}>
       <ul>
         <li>
-          <NavLink to='/'>Home</NavLink>
+          <NavLink to='/' className={(navData) =>
+            navData.isActive ? styles.active : ''
+          } >Home</NavLink>
         </li>
         <li>
-          <NavLink to='/all-carts'>All Carts</NavLink>
+          <NavLink to='/all-carts' className={(navData) =>
+            navData.isActive ? styles.active : ''
+          } >All Carts</NavLink>
         </li>
         <li>
-          <NavLink to='/add-cart'>Add Cart</NavLink>
+          <NavLink to='/add-cart'  className={(navData) =>
+            navData.isActive ? styles.active : ''
+          }>Add Cart</NavLink>
         </li>
       </ul>
     </header>

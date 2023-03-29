@@ -1,4 +1,5 @@
 @import './colors.scss';
+@import './variables';
 
 .header {
   position: fixed;
@@ -6,7 +7,7 @@
   left: 0;
   width: 100%;
   height: 7vh;
-  background-color: $light_gray;
+  background-color: $darkgray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,10 +22,24 @@
 
     li {
       a {
+        @include shadow;
+        color: $white;
+        transition: all 0.2s ease-out;
+        position: relative;
+        border-radius: 1.5rem;
+        padding: 0.8rem 1.2rem;
         text-decoration: none;
-        color: $dark_green;
-        font-weight: bold;
-        font-size: 1.2rem;
+
+        &:hover,
+        &:active,
+        &.active {
+          color: $purple;
+        }
+
+        &:active,
+        &.active {
+          @include shadowActive;
+        }
       }
     }
   }

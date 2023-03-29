@@ -12,7 +12,7 @@ import styles from '../styles/Chart.module.scss'
 
 const Chart = (props) => {
 
-  // * i leave it for later, maybe i'll use it
+  // * i leave it, maybe i'll use it later
   //   const styles = `
   //     width: 1100px;
   //     height: 400px;
