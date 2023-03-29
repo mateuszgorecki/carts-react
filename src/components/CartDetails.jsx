@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import LayoutWrapper from './LayoutWrapper'
 import { useContext } from 'react'
 import CartsContext from '../context/carts-context'
+import Chart from './Chart'
 
 import styles from '../styles/CartDetails.module.scss'
 
@@ -57,7 +58,9 @@ const SingleCart = () => {
             })}
           </ul>
         </div>
-        <div className={styles.right}></div>
+        <div className={styles.right}>
+          <Chart products={products} />
+        </div>
       </div>
     </LayoutWrapper>
   )

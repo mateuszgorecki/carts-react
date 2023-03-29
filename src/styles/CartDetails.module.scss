@@ -6,13 +6,16 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   width: 1200px;
   justify-content: center;
   gap: 1.2rem;
 
   .left {
-    width: 48%;
+    width: 100%;
     height: 100%;
+    display: flex;
+    gap: 1rem;
 
     .cart-info {
       height: 200px;
@@ -22,6 +25,7 @@
       justify-content: space-between;
       padding-right: 1.2rem;
       border-bottom: 1px solid $dark_green;
+      width: 400px;
 
       h1 {
         width: 100%;
@@ -59,7 +63,8 @@
   }
 
   .right {
-    width: 48%;
-    background-color: $dark_green;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
