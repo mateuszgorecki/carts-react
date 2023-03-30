@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
-@import './colors.scss';
+@import './colors';
+@import './variables';
 
 body {
   margin: 0;
@@ -12,7 +13,7 @@ body {
 }
 
 main {
-  padding: 7vh 0 0;
+  padding:var(--header_height) 0 0;
   height: fit-content;
   margin: 0 0 5rem;
   width: 100%;

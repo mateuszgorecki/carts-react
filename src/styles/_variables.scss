@@ -23,6 +23,10 @@
   text-decoration: none;
   cursor: pointer;
 
+  @media screen and (max-width: 1440px) {
+    padding: 0.6rem 1rem;
+  }
+
   &:hover,
   &:active,
   &.active {
@@ -32,5 +36,12 @@
   &:active,
   &.active {
     @include shadowActive;
+  }
+}
+
+:root {
+  --header_height: 7vh;
+  @media screen and (max-width: 1440px) {
+    --header_height: 10vh;
   }
 }

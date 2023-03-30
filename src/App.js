@@ -8,7 +8,7 @@ import WelcomePage from './pages/Welcome'
 import CartsProvider from './context/CartsProvider'
 
 import styles from './styles/App.module.scss'
-import './styles/global.scss'
+import './styles/_global.scss'
 
 const router = createBrowserRouter([
   {
