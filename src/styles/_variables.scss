@@ -11,3 +11,26 @@
     inset 0.2rem 0.2rem 0.2rem rgba($black, 0.5),
     inset -0.2rem -0.2rem 0.5rem $light-shadow;
 }
+
+@mixin button {
+  @include shadow;
+  color: $white;
+  transition: all 0.2s ease-out;
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  background-color: $darkgray;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &.active {
+    color: $purple;
+  }
+
+  &:active,
+  &.active {
+    @include shadowActive;
+  }
+}

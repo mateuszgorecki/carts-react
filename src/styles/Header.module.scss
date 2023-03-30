@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 
   ul {
     width: 100%;
@@ -22,24 +23,7 @@
 
     li {
       a {
-        @include shadow;
-        color: $white;
-        transition: all 0.2s ease-out;
-        position: relative;
-        border-radius: 1.5rem;
-        padding: 0.8rem 1.2rem;
-        text-decoration: none;
-
-        &:hover,
-        &:active,
-        &.active {
-          color: $purple;
-        }
-
-        &:active,
-        &.active {
-          @include shadowActive;
-        }
+        @include button;
       }
     }
   }

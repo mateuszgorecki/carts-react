@@ -37,8 +37,8 @@ const Chart = (props) => {
   const data = props.products.map(
     ({ title, price, discountedPrice, quantity }) => ({
       title,
-      price,
-      discountedPrice: Math.ceil(discountedPrice / quantity),
+      Price: price,
+      Discounted: Math.ceil(discountedPrice / quantity),
     })
   )
 
@@ -46,26 +46,26 @@ const Chart = (props) => {
     <ResponsiveContainer width='100%'>
       <LineChart
         data={data}
-        margin={{ top: 5, right: 140, bottom: 15, left: 20 }}
+        margin={{ top: 5, right: 140, bottom: 30, left: 20 }}
       >
         <Line
-          type='linear'
-          dataKey='price'
-          stroke='#0f0'
+          type='monotone'
+          dataKey='Price'
+          stroke='#AA00FF'
         />
         <Line
-          type='linear'
-          dataKey='discountedPrice'
-          stroke='#f00'
+          type='monotone'
+          dataKey='Discounted'
+          stroke='#FF8F00'
         />
         <XAxis
           dataKey='title'
-          stroke='#000'
+          stroke='#fff'
           angle={10}
           textAnchor='start'
           fontSize={12}
         />
-        <YAxis stroke='#000' />
+        <YAxis stroke='#fff' />
         <Tooltip />
       </LineChart>
     </ResponsiveContainer>

@@ -13,30 +13,29 @@ const SingleCart = () => {
   const { carts } = ctx
   const cart = carts.find((cart) => cart.id === parseInt(cartId))
 
-  const {
-    discountedTotal,
-    products,
-    total,
-    totalProducts,
-    totalQuantity,
-  } = cart
+  const { discountedTotal, products, total, totalProducts, totalQuantity } =
+    cart
 
   return (
     <LayoutWrapper className={styles.wrapper}>
-      <h1>cart details</h1>
+      <h1>Cart Details</h1>
 
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles['cart-info']}>
-            <h1>Cart no. {cartId}</h1>
-            <div>
-              <p>Products: {totalProducts}</p>
-              <p>Total items: {totalQuantity}</p>
-            </div>
-            <div>
-              <p>Price: {total}</p>
-              <p>Discounted total: {discountedTotal}</p>
-            </div>
+            <h2>Cart no. {cartId}</h2>
+            <p>
+              <span>Products:</span> {totalProducts}
+            </p>
+            <p>
+              <span>Total items:</span> {totalQuantity}
+            </p>
+            <p>
+              <span>Price:</span> {total}
+            </p>
+            <p>
+              <span>Discounted total:</span> {discountedTotal}
+            </p>
           </div>
 
           <ul className={styles.items}>

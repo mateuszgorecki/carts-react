@@ -1,5 +1,8 @@
 import React, { useReducer, useContext, useRef } from 'react'
 import CartsContext from '../context/carts-context'
+import LayoutWrapper from './LayoutWrapper'
+
+import styles from '../styles/AddCart.module.scss'
 
 const initialState = {
   id: 0,
@@ -55,6 +58,8 @@ const AddCart = () => {
   const ctx = useContext(CartsContext)
   const { addCart, carts } = ctx
 
+  const isDisabled = state.products.length > 0 ? false : true
+
   const titleRef = useRef()
   const priceRef = useRef()
   const quantityRef = useRef()
@@ -64,7 +69,7 @@ const AddCart = () => {
   const randomNumber = () => Math.floor(Math.random() * 100)
   const userId = randomNumber()
 
-  const addCartHandler = (item) => {
+  const addCartHandler = async (item) => {
     addCart(item)
   }
 
@@ -95,74 +100,93 @@ const AddCart = () => {
     event.target.reset()
   }
 
-  return (
-    <div>
-      <h1>Product Form</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title:</label>
-        <input
-          type='text'
-          id='title'
-          name='title'
-          ref={titleRef}
-          required
-        />
-
-        <label htmlFor='price'>Price:</label>
-        <input
-          type='number'
-          id='price'
-          name='price'
-          step='1'
-          min='0'
-          ref={priceRef}
-          required
-        />
-
-        <label htmlFor='quantity'>Quantity:</label>
-        <input
-          type='number'
-          id='quantity'
-          name='quantity'
-          step='1'
-          min='1'
-          max='10'
-          ref={quantityRef}
-          required
-        />
-
-        <label htmlFor='discount'>Discount:</label>
-        <input
-          type='number'
-          id='discount'
-          name='discount'
-          step='1'
-          min='0'
-          max='100'
-          ref={discountRef}
-          required
-        />
-
-        <button type='submit'>Add Product</button>
-      </form>
-
-      <h2>Cart Summary</h2>
-      <p>Total Unique Products: {state.totalProducts}</p>
-      <p>Total Quantity: {state.totalQuantity}</p>
-      <p>Total Price: {state.total}</p>
-      <p>Total Price with Discount: {state.discountedTotal}</p>
-
-      <h2>Cart Items</h2>
-      <ul>
-        {state.products.map((product) => (
+  const listOfCartItems =
+    state.products.length > 0
+      ? state.products.map((product) => (
           <li key={product.id}>
-            {product.title} ({product.quantity} x {product.price}) -{' '}
-            {product.discountPercentage}% off = {product.discountedPrice}
+            <span className={styles['item-title']}>{product.title}</span> - (
+            {product.quantity} x {product.price}) - {product.discountPercentage}
+            % off = {product.discountedPrice}
           </li>
-        ))}
-      </ul>
-      <button onClick={() => addCartHandler(state)}>Add Cart</button>
-    </div>
+        ))
+      : <p>Cart is empty 😕</p>
+  return (
+    <LayoutWrapper className={styles.wrapper}>
+      <h1>Add products and create cart</h1>
+      <div className={styles.inner}>
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder='Title'
+            type='text'
+            id='title'
+            ref={titleRef}
+            required
+          />
+
+          <input
+            placeholder='Price'
+            type='number'
+            id='price'
+            step='1'
+            min='0'
+            ref={priceRef}
+            required
+          />
+
+          <input
+            placeholder='Quantity'
+            type='number'
+            id='quantity'
+            step='1'
+            min='1'
+            max='10'
+            ref={quantityRef}
+            required
+          />
+
+          <input
+            placeholder='Discount in %'
+            type='number'
+            id='discount'
+            step='1'
+            min='0'
+            max='100'
+            ref={discountRef}
+            required
+          />
+
+          <button type='submit'>Add Product</button>
+        </form>
+        <div className={styles.items}>
+          <h2>Cart Items</h2>
+          <ul>{listOfCartItems}</ul>
+        </div>
+        <div className={styles.summary}>
+          <h2>Cart Summary</h2>
+          <p>
+            <span className={styles.label}>Total Unique Products:</span>{' '}
+            {state.totalProducts}
+          </p>
+          <p>
+            <span className={styles.label}>Total Quantity:</span>{' '}
+            {state.totalQuantity}
+          </p>
+          <p>
+            <span className={styles.label}>Total Price</span>: {state.total}
+          </p>
+          <p>
+            <span className={styles.label}>Total Price with Discount:</span>{' '}
+            {state.discountedTotal}
+          </p>
+          <button
+            disabled={isDisabled}
+            onClick={() => addCartHandler(state)}
+          >
+            Append Cart
+          </button>
+        </div>
+      </div>
+    </LayoutWrapper>
   )
 }
 

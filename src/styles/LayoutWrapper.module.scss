@@ -2,14 +2,14 @@
 
 .wrapper {
   border-radius: 5px;
-  border: 1px solid $dark_green;
   box-sizing: border-box;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: fit-content;
-  height: 80vh;
-  overflow: hidden;
+
+  h1 {
+    margin: 3rem 0;
+  }
 }

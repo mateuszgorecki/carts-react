@@ -12,11 +12,12 @@ body {
 }
 
 main {
-  padding: 60px 0 0;
-  height: 93vh;
+  padding: 7vh 0 0;
+  height: fit-content;
+  margin: 0 0 5rem;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }

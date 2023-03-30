@@ -5,13 +5,11 @@ const CartsProvider = (props) => {
   const [carts, setCarts] = useState([])
 
   useEffect(() => {
-    const fetchCarts = async () => {
+    ;(async () => {
       const res = await fetch('https://dummyjson.com/carts')
       const data = await res.json()
-      console.log(data.carts)
       setCarts(data.carts)
-    }
-    fetchCarts()
+    })()
   }, [])
 
   const addCartHandler = (item) => {
