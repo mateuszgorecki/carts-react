@@ -101,20 +101,23 @@ const AddCart = () => {
   }
 
   const listOfCartItems =
-    state.products.length > 0
-      ? state.products.map((product) => (
-          <li key={product.id}>
-            <span className={styles['item-title']}>{product.title}</span> - (
-            {product.quantity} x {product.price}) - {product.discountPercentage}
-            % off = {product.discountedPrice}
-          </li>
-        ))
-      : <p>Cart is empty 😕</p>
+    state.products.length > 0 ? (
+      state.products.map((product) => (
+        <li key={product.id}>
+          <span className={styles['item-title']}>{product.title}</span> - (
+          {product.quantity} x {product.price}) - {product.discountPercentage}%
+          off = {product.discountedPrice}
+        </li>
+      ))
+    ) : (
+      <p>Cart is empty 😕</p>
+    )
   return (
     <LayoutWrapper className={styles.wrapper}>
       <h1>Add products and create cart</h1>
       <div className={styles.inner}>
         <form onSubmit={handleSubmit}>
+          <h2>Add product</h2>
           <input
             placeholder='Title'
             type='text'
