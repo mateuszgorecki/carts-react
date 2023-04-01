@@ -124,6 +124,7 @@ const AddCart = () => {
             id='title'
             ref={titleRef}
             required
+            maxLength={40}
           />
 
           <input

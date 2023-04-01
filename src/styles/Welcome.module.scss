@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: calc(100vh - var(--header_height) - 5rem);
 
   a{
     @include button;

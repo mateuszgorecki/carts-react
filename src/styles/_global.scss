@@ -21,4 +21,9 @@ main {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+
+  @media screen and (max-width: 576px){
+    padding: 0 0 var(--header_height);
+    margin: 0 0 2rem;
+  }
 }

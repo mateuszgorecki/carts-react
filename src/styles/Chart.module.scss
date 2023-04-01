@@ -4,3 +4,28 @@
   height: 400px;
   width: 100%;
 }
+
+@media screen and (max-width: 1200px) {
+  .chart {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .chart {
+    width: 800px !important;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    & > div {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .chart {
+    height: 300px;
+
+  }
+}

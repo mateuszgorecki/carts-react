@@ -43,6 +43,15 @@
       &:active {
         @include shadowActive;
       }
+
+      &[type='number'] {
+        -moz-appearance: textfield;
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        display: none;
+      }
     }
   }
 

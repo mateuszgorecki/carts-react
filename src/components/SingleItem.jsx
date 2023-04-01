@@ -5,7 +5,6 @@ import styles from '../styles/SingleItem.module.scss'
 const SingleItem = (props) => {
   const {
     id,
-    title,
     total,
     discountedTotal,
     totalProducts,
@@ -17,7 +16,7 @@ const SingleItem = (props) => {
       className={styles.item}
     >
       <NavLink to={`/all-carts/${id}`}>
-        <p className={title}>Cart no. {id}</p>
+        <p>Cart no. {id}</p>
         <p>Price: {total}</p>
         <p>After discount: {discountedTotal}</p>
         <p>Different products: {totalProducts}</p>

@@ -1,4 +1,3 @@
-// import { ResponsiveLine } from '@nivo/line'
 import {
   LineChart,
   Line,
@@ -8,31 +7,38 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
+import CustomTooltip from './CustomTooltip'
+
 import styles from '../styles/Chart.module.scss'
 
 const Chart = (props) => {
+  const width = window.innerWidth
 
-  // * i leave it, maybe i'll use it later
-  //   const styles = `
-  //     width: 1100px;
-  //     height: 400px;
-  //     margin: 5px 140px 15px 20px;
-  // `
+  let propsForChart = {
+    fontSize: 12,
+    textAnchor: 'start',
+    angle: 7,
+    margin: { top: 5, right: 220, bottom: 40, left: 20 },
+  }
 
-  // const priceData = props.products.map(({ title, price }) => ({
-  //   x: title,
-  //   y: price,
-  // }))
-  // const discountedPriceData = props.products.map(
-  //   ({ title, discountedPrice, quantity }) => ({
-  //     x: title,
-  //     y: discountedPrice / quantity,
-  //   })
-  // )
-  // const transformedData = [
-  //   { id: 'price', data: priceData },
-  //   { id: 'discounted', data: discountedPriceData },
-  // ]
+  if (width <= 1440 && width > 1200) {
+    propsForChart = {
+      fontSize: 10,
+      margin: { top: 5, right: 140, bottom: 20, left: 20 },
+    }
+  } else if (width <= 1200 && width > 576) {
+    propsForChart = {
+      fontSize: 10,
+      textAnchor: 'end',
+      angle: -70,
+      margin: { top: 5, right: 20, bottom: 200, left: 20 },
+    }
+  } else if(width <= 576) {
+    propsForChart = {
+      fontSize: 0,
+      margin: { top: 5, right: 10, bottom: 0, left: 0 },
+    }
+  }
 
   const data = props.products.map(
     ({ title, price, discountedPrice, quantity }) => ({
@@ -42,74 +48,45 @@ const Chart = (props) => {
     })
   )
 
-  const renderLineChart = (
-    <ResponsiveContainer width='100%'>
-      <LineChart
-        data={data}
-        margin={{ top: 5, right: 140, bottom: 30, left: 20 }}
-      >
-        <Line
-          type='monotone'
-          dataKey='Price'
-          stroke='#AA00FF'
-        />
-        <Line
-          type='monotone'
-          dataKey='Discounted'
-          stroke='#FF8F00'
-        />
-        <XAxis
-          dataKey='title'
-          stroke='#fff'
-          angle={10}
-          textAnchor='start'
-          fontSize={12}
-        />
-        <YAxis stroke='#fff' />
-        <Tooltip />
-      </LineChart>
-    </ResponsiveContainer>
-  )
-
   return (
     <div className={styles.chart}>
-      {/* <ResponsiveLine
-        data={transformedData}
-        margin={{ top: 50, right: 140, bottom: 50, left: 60 }}
-        xScale={{ type: 'point' }}
-        yScale={{
-          type: 'linear',
-        }}
-        axisBottom={{
-          orient: 'bottom',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 7,
-        }}
-        axisLeft={{
-          orient: 'left',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-        }}
-        pointSize={8}
-        useMesh={true}
-        legends={[
-          {
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 100,
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: 'circle',
-          },
-        ]}
-        isInteractive={false}
-      /> */}
-      {renderLineChart}
+      <ResponsiveContainer width='100%'>
+        <LineChart
+          data={data}
+          margin={propsForChart.margin}
+        >
+          <Line
+            type='monotone'
+            dataKey='Price'
+            stroke='#AA00FF'
+          />
+          <Line
+            type='monotone'
+            dataKey='Discounted'
+            stroke='#FF8F00'
+          />
+          <XAxis
+            dataKey='title'
+            textAnchor={propsForChart.textAnchor}
+            angle={propsForChart.angle}
+            fontSize={propsForChart.fontSize}
+            stroke='#fff'
+          />
+          <YAxis stroke='#fff' />
+          <Tooltip
+            content={(data, index) => {
+
+              return (
+                <CustomTooltip
+                title={data.payload[0]?.payload.title}
+                price={data.payload[0]?.payload.Price}
+                discount={data.payload[0]?.payload.Discounted}
+              />
+              )
+            }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   )
 }

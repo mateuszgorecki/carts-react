@@ -44,4 +44,8 @@
   @media screen and (max-width: 1440px) {
     --header_height: 10vh;
   }
+
+  @media screen and (max-width: 576px) {
+    --header_height: 12vh;
+  }
 }

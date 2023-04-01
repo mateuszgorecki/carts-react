@@ -1,0 +1,30 @@
+@import './colors';
+@import './variables';
+
+.tooltip {
+  @include shadow;
+  background-color: $gray;
+  color: $darkgray;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  @media screen and (max-width: 576px) {
+    font-weight: 400;
+    max-width: 200px;
+  }
+
+  .price {
+    color: $purple;
+  }
+
+  .discount {
+    color: $orange;
+  }
+
+  p {
+    margin: 0;
+  }
+}

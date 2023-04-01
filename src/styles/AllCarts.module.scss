@@ -1,4 +1,5 @@
-@import './colors.scss';
+@import './colors';
+@import './variables';
 
 .items {
   width: 1000px;
@@ -7,4 +8,32 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  & > div {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      @include button;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .items {
+    width: 800px;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .items {
+    width: 90vw;
+  }
 }
