@@ -99,7 +99,7 @@
       gap: 0.5rem;
 
       p {
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
     }
 
@@ -115,7 +115,7 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 992px) {
   .item {
     justify-content: space-between;
     gap: 0;
@@ -123,26 +123,14 @@
     a {
       width: 85%;
     }
-
-    // button {
-    //   width: 1.4rem;
-    //   height: 1.4rem;
-    //   padding: 1.4rem;
-
-    //   &::before {
-    //     font-size: 0.6rem;
-    //   }
-    // }
   }
 }
 
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
   .item {
-
     a {
       width: 75%;
-      padding: 1rem .7rem
+      padding: 1rem 0.7rem;
     }
   }
 }

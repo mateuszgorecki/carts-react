@@ -13,7 +13,7 @@ body {
 }
 
 main {
-  padding:var(--header_height) 0 0;
+  padding: var(--header_height) 0 0;
   height: fit-content;
   margin: 0 0 5rem;
   width: 100%;
@@ -22,7 +22,7 @@ main {
   align-items: center;
   flex-direction: column;
 
-  @media screen and (max-width: 576px){
+  @media screen and (max-width: 576px) {
     padding: 0 0 var(--header_height);
     margin: 0 0 2rem;
   }

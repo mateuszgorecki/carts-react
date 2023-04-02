@@ -142,7 +142,7 @@
         justify-content: space-between;
         align-items: flex-start;
         box-sizing: border-box;
-        padding: 0 1rem .5rem;
+        padding: 0 1rem 0.5rem;
       }
 
       .items {
@@ -161,21 +161,10 @@
     .left {
       .items {
         li {
-         & > div {
-          justify-content: center;
-         }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .container {
-    .left {
-      .items {
-        li {
-          font-size: .8rem;
+          font-size: 0.8rem;
+          & > div {
+            justify-content: center;
+          }
         }
       }
     }

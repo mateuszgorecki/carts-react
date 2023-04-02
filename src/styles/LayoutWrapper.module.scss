@@ -11,5 +11,19 @@
 
   h1 {
     margin: 3rem 0;
+    text-align: center;
+    width: 90vw;
+
+    @media screen and (max-width: 576px) {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .wrapper {
+    h2 {
+      font-size: 1.3rem;
+    }
   }
 }
