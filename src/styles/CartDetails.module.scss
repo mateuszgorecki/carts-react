@@ -99,7 +99,6 @@
         width: 300px;
 
         h2 {
-          margin: 1.5rem 0 2rem;
           font-size: 1.8rem;
         }
 
@@ -110,19 +109,12 @@
 
       .items {
         height: 260px;
-        gap: 1rem;
 
         li {
           padding: 0.55rem 1rem;
           font-size: 0.85rem;
         }
       }
-    }
-
-    .right {
-      width: 100%;
-      display: flex;
-      justify-content: center;
     }
   }
 }
