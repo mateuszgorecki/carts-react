@@ -12,9 +12,7 @@ const SingleItem = (props) => {
     deleteCart,
   } = props
   return (
-    <li
-      className={styles.item}
-    >
+    <li className={styles.item}>
       <NavLink to={`/all-carts/${id}`}>
         <p>Cart no. {id}</p>
         <p>Price: {total}</p>
@@ -22,8 +20,7 @@ const SingleItem = (props) => {
         <p>Different products: {totalProducts}</p>
         <p>Total items: {totalQuantity}</p>
       </NavLink>
-      <button onClick={() => deleteCart(id)}>
-      </button>
+      <button onClick={() => deleteCart(id)}></button>
     </li>
   )
 }

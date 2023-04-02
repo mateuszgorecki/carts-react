@@ -11,7 +11,10 @@ function ErrorPage() {
     return (
       <>
         <Header />
-        <main id='error-content' className={styles.error}>
+        <main
+          id='error-content'
+          className={styles.error}
+        >
           <h1>Oops, {error.status}!</h1>
           <p>{error.statusText}</p>
           {error.data?.message && (
@@ -24,7 +27,10 @@ function ErrorPage() {
     )
   } else if (error instanceof Error) {
     return (
-      <div id='error-page' className={styles.error}>
+      <div
+        id='error-page'
+        className={styles.error}
+      >
         <h1>Oops! Unexpected Error</h1>
         <p>Something went wrong.</p>
         <p>
@@ -36,7 +42,10 @@ function ErrorPage() {
     )
   } else
     return (
-      <div id='error-page' className={styles.error}>
+      <div
+        id='error-page'
+        className={styles.error}
+      >
         <h1>Oops! Page not found.</h1>
         <p>Take me home.</p>
         <NavLink to='/'>Home</NavLink>

@@ -33,7 +33,7 @@ const Chart = (props) => {
       angle: -70,
       margin: { top: 5, right: 20, bottom: 200, left: 20 },
     }
-  } else if(width <= 576) {
+  } else if (width <= 576) {
     propsForChart = {
       fontSize: 0,
       margin: { top: 5, right: 10, bottom: 0, left: 0 },
@@ -75,13 +75,12 @@ const Chart = (props) => {
           <YAxis stroke='#fff' />
           <Tooltip
             content={(data, index) => {
-
               return (
                 <CustomTooltip
-                title={data.payload[0]?.payload.title}
-                price={data.payload[0]?.payload.Price}
-                discount={data.payload[0]?.payload.Discounted}
-              />
+                  title={data.payload[0]?.payload.title}
+                  price={data.payload[0]?.payload.Price}
+                  discount={data.payload[0]?.payload.Discounted}
+                />
               )
             }}
           />

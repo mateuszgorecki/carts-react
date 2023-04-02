@@ -1,8 +1,11 @@
-import React, { useReducer, useContext, useRef } from 'react'
+import React, { useReducer, useContext, useState } from 'react'
 import CartsContext from '../context/carts-context'
 import LayoutWrapper from './LayoutWrapper'
 
 import styles from '../styles/AddCart.module.scss'
+
+const MAX_TITLE_LENGTH = 40
+const MAX_PRICE_LENGTH = 6
 
 const initialState = {
   id: 0,
@@ -15,7 +18,9 @@ const initialState = {
 }
 
 const reducer = (state, action) => {
-  if (action.type === 'ADD_PRODUCT') {
+  if (action.type === 'RESET') {
+    return initialState
+  } else if (action.type === 'ADD_PRODUCT') {
     const newProduct = {
       id: Date.now(),
       title: action.payload.title,
@@ -40,6 +45,7 @@ const reducer = (state, action) => {
 
     const total = updatedProducts.reduce((acc, item) => acc + item.total, 0)
     const discountedTotal = total - totalDiscount
+
     return {
       ...state,
       id: action.payload.lastId,
@@ -56,30 +62,69 @@ const reducer = (state, action) => {
 const AddCart = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const ctx = useContext(CartsContext)
-  const { addCart, carts } = ctx
+  const { addCart, carts, isCartAdded, toggleIsAdded } = ctx
+
+  const [titleValue, setTitle] = useState('')
+  const [priceValue, setPrice] = useState('')
+  const [quantityValue, setQuantity] = useState('')
+  const [discountValue, setDiscount] = useState('')
 
   const isDisabled = state.products.length > 0 ? false : true
 
-  const titleRef = useRef()
-  const priceRef = useRef()
-  const quantityRef = useRef()
-  const discountRef = useRef()
+  const handleTitleChange = (event) => {
+    const value = event.target.value
+    if (value.length <= MAX_TITLE_LENGTH) {
+      setTitle(value)
+    }
+  }
+
+  const handlePriceChange = (event) => {
+    const value = event.target.value
+    if (value.length <= MAX_PRICE_LENGTH) {
+      setPrice(value)
+    }
+  }
+
+  const handleQuantityChange = (event) => {
+    const value = event.target.value
+    setQuantity(value)
+  }
+
+  const handleDiscountChange = (event) => {
+    const value = event.target.value
+    setDiscount(value)
+  }
 
   const lastId = carts.length > 0 ? carts[carts.length - 1].id + 1 : 0
   const randomNumber = () => Math.floor(Math.random() * 100)
   const userId = randomNumber()
 
-  const addCartHandler = async (item) => {
+  const addCartHandler = (item) => {
     addCart(item)
+
+    if (isCartAdded) {
+      dispatch({
+        type: 'RESET',
+      })
+      alert('Cart append successfully')
+      toggleIsAdded(false)
+    }
+  }
+
+  const reset = () => {
+    setTitle('')
+    setPrice('')
+    setQuantity('')
+    setDiscount('')
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    const title = titleRef.current.value
-    const price = parseInt(priceRef.current.value)
-    const quantity = parseInt(quantityRef.current.value)
-    const discount = parseInt(discountRef.current.value)
+    const title = titleValue
+    const price = parseInt(priceValue)
+    const quantity = parseInt(quantityValue)
+    const discount = parseInt(discountValue)
     const total = price * quantity
     const discountedPrice = Math.ceil(total - (total * discount) / 100)
 
@@ -97,7 +142,7 @@ const AddCart = () => {
       },
     })
 
-    event.target.reset()
+    reset()
   }
 
   const listOfCartItems =
@@ -122,18 +167,25 @@ const AddCart = () => {
             placeholder='Title'
             type='text'
             id='title'
-            ref={titleRef}
+            value={titleValue}
+            onChange={handleTitleChange}
             required
             maxLength={40}
           />
+          {titleValue.length >= MAX_TITLE_LENGTH && (
+            <span style={{ color: 'red' }}>
+              Maksymalna długość tytułu to {MAX_TITLE_LENGTH} znaków
+            </span>
+          )}
 
           <input
             placeholder='Price'
             type='number'
             id='price'
+            value={priceValue}
+            onChange={handlePriceChange}
             step='1'
             min='0'
-            ref={priceRef}
             required
           />
 
@@ -141,24 +193,37 @@ const AddCart = () => {
             placeholder='Quantity'
             type='number'
             id='quantity'
+            value={quantityValue}
+            onChange={handleQuantityChange}
             step='1'
             min='1'
             max='10'
-            ref={quantityRef}
             required
           />
+          {(quantityValue < 0 || quantityValue > 10) &&
+          quantityValue.length > 0 ? (
+            <span style={{ color: 'red' }}>
+              Ilość musi być z przedziału 0 - 10
+            </span>
+          ) : null}
 
           <input
             placeholder='Discount in %'
             type='number'
             id='discount'
+            value={discountValue}
+            onChange={handleDiscountChange}
             step='1'
             min='0'
             max='100'
-            ref={discountRef}
             required
           />
-
+          {(discountValue < 0 || discountValue > 100) &&
+          discountValue.length > 0 ? (
+            <span style={{ color: 'red' }}>
+              Rabat musi być z przedziału 0 - 100
+            </span>
+          ) : null}
           <button type='submit'>Add Product</button>
         </form>
         <div className={styles.items}>
