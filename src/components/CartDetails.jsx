@@ -2,9 +2,9 @@ import { useParams } from 'react-router-dom'
 import LayoutWrapper from './LayoutWrapper'
 import { useContext } from 'react'
 import CartsContext from '../context/carts-context'
-import Chart from './Chart'
+import Chart from './Chart/Chart'
 
-import styles from '../styles/CartDetails.module.scss'
+import styles from './CartDetails.module.scss'
 
 const SingleCart = () => {
   const params = useParams()

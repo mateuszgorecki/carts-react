@@ -1,4 +1,4 @@
-import styles from '../styles/Welcome.module.scss'
+import styles from './Welcome.module.scss'
 
 const WelcomePage = () => {
   return (

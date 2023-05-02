@@ -1,4 +1,4 @@
-import styles from '../styles/LayoutWrapper.module.scss'
+import styles from './LayoutWrapper.module.scss'
 
 const LayoutWrapper = (props) => {
   const classes = `${styles.wrapper} ${props.className ? props.className : ''}`

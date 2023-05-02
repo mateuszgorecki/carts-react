@@ -7,7 +7,7 @@ import CartDetails from './components/CartDetails'
 import WelcomePage from './pages/Welcome'
 import CartsProvider from './context/CartsProvider'
 
-import styles from './styles/App.module.scss'
+import styles from './App.module.scss'
 import './styles/_global.scss'
 
 const router = createBrowserRouter([
@@ -52,3 +52,10 @@ function App() {
 }
 
 export default App
+
+
+//TODO: turn to ES6
+//TODO: read about deps and devDeps to organize them
+//TODO: add unit tests (jest)
+//TODO: static code analysis (lefovers, console.logs and so on)
+//TODO: turn to TS

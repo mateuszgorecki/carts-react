@@ -1,7 +1,7 @@
 import { isRouteErrorResponse, useRouteError, NavLink } from 'react-router-dom'
 import Header from '../components/Header'
 
-import styles from '../styles/Error.module.scss'
+import styles from './Error.module.scss'
 
 function ErrorPage() {
   const error = useRouteError()

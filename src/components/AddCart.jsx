@@ -2,7 +2,7 @@ import React, { useReducer, useContext, useState } from 'react'
 import CartsContext from '../context/carts-context'
 import LayoutWrapper from './LayoutWrapper'
 
-import styles from '../styles/AddCart.module.scss'
+import styles from './AddCart.module.scss'
 
 const MAX_TITLE_LENGTH = 40
 const MAX_PRICE_LENGTH = 6

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-import styles from '../styles/SingleItem.module.scss'
+import styles from './SingleItem.module.scss'
 
 const SingleItem = (props) => {
   const {

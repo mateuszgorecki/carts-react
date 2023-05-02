@@ -1,4 +1,4 @@
-import styles from '../styles/Tooltip.module.scss'
+import styles from './Tooltip.module.scss'
 
 const CustomTooltip = (props) => {
   return (

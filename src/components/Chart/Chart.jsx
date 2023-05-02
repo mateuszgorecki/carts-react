@@ -7,9 +7,9 @@ import {
   ResponsiveContainer,
 } from 'recharts'
 
-import CustomTooltip from './CustomTooltip'
+import CustomTooltip from '../Tooltip/CustomTooltip'
 
-import styles from '../styles/Chart.module.scss'
+import styles from './Chart.module.scss'
 
 const Chart = (props) => {
   const width = window.innerWidth

@@ -4,7 +4,7 @@ import CartsContext from '../context/carts-context'
 import LayoutWrapper from './LayoutWrapper'
 import SingleItem from './SingleItem'
 
-import styles from '../styles/AllCarts.module.scss'
+import styles from './AllCarts.module.scss'
 
 const AllCharts = () => {
   const ctx = useContext(CartsContext)
