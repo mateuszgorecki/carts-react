@@ -52,10 +52,3 @@ function App() {
 }
 
 export default App
-
-
-//TODO: turn to ES6
-//TODO: read about deps and devDeps to organize them
-//TODO: add unit tests (jest)
-//TODO: static code analysis (lefovers, console.logs and so on)
-//TODO: turn to TS
