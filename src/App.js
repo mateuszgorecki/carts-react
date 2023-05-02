@@ -41,7 +41,7 @@ const router = createBrowserRouter([
   },
 ])
 
-function App() {
+const App = () => {
   return (
     <CartsProvider>
       <div className={styles.app}>

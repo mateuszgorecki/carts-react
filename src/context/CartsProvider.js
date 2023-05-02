@@ -27,7 +27,6 @@ const CartsProvider = (props) => {
     const data = await res.json()
     setCarts([...carts, item])
     setAddedCart(true)
-    console.log('cart', data)
   }
 
   const deleteCartHandler = async (id) => {
@@ -36,7 +35,6 @@ const CartsProvider = (props) => {
       method: 'DELETE',
     })
     const data = await res.json()
-    console.log('deleted cart', data)
   }
 
   const cartContext = {

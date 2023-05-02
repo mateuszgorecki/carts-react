@@ -3,9 +3,8 @@ import Header from '../components/Header'
 
 import styles from './Error.module.scss'
 
-function ErrorPage() {
+const ErrorPage = () => {
   const error = useRouteError()
-  console.log(error)
 
   if (isRouteErrorResponse(error)) {
     return (

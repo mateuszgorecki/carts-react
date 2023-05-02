@@ -69,20 +69,16 @@ const AddCart = () => {
   const [quantityValue, setQuantity] = useState('')
   const [discountValue, setDiscount] = useState('')
 
-  const isDisabled = state.products.length > 0 ? false : true
+  const isDisabled = !state.products.length
 
   const handleTitleChange = (event) => {
     const value = event.target.value
-    if (value.length <= MAX_TITLE_LENGTH) {
-      setTitle(value)
-    }
+    setTitle(value.length <= MAX_TITLE_LENGTH ? value : titleValue)
   }
 
   const handlePriceChange = (event) => {
     const value = event.target.value
-    if (value.length <= MAX_PRICE_LENGTH) {
-      setPrice(value)
-    }
+    setPrice(value.length <= MAX_PRICE_LENGTH ? value : priceValue)
   }
 
   const handleQuantityChange = (event) => {
@@ -147,13 +143,21 @@ const AddCart = () => {
 
   const listOfCartItems =
     state.products.length > 0 ? (
-      state.products.map((product) => (
-        <li key={product.id}>
-          <span className={styles['item-title']}>{product.title}</span> - (
-          {product.quantity} x {product.price}) - {product.discountPercentage}%
-          off = {product.discountedPrice}
-        </li>
-      ))
+      state.products.map(
+        ({
+          id,
+          title,
+          quantity,
+          price,
+          discountPercentage,
+          discountedPrice,
+        }) => (
+          <li key={id}>
+            <span className={styles['item-title']}>{title}</span> - ({quantity}{' '}
+            x {price}) - {discountPercentage}% off = {discountedPrice}
+          </li>
+        )
+      )
     ) : (
       <p>Cart is empty 😕</p>
     )
@@ -170,7 +174,7 @@ const AddCart = () => {
             value={titleValue}
             onChange={handleTitleChange}
             required
-            maxLength={40}
+            maxLength={MAX_TITLE_LENGTH}
           />
           {titleValue.length >= MAX_TITLE_LENGTH && (
             <span style={{ color: 'red' }}>
@@ -187,6 +191,7 @@ const AddCart = () => {
             step='1'
             min='0'
             required
+            maxLength={MAX_PRICE_LENGTH}
           />
 
           <input
