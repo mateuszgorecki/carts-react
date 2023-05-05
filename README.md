@@ -1,26 +1,26 @@
 # React Dashboard App
 
-Aplikacja przedstawia przykładowy dashboard.
+This is example dashboard app.
 
-##  Funkcjonalności
-* Pobieranie danych z API: [https://dummyjson.com/docs/carts](https://dummyjson.com/docs/carts)
-* Wyświetlanie koszyków w postaci listy
-* Wyświetlanie zawartości danego koszyka:
-    * Przedmioty wraz z informacjami w postaci listy
-    * Wykres obrazujący ceny przedmiotów przed i po rabacie
-* Usuwanie koszyków
-* Formularz dodawania produktów w ramach jednego koszyka oraz dodawanie koszyka do listy
+## Functionalities
+* Fetching data from API: [https://dummyjson.com/docs/carts](https://dummyjson.com/docs/carts)
+* Display carts in list view
+* Display contents of single cart:
+    * Products with extended info in list view
+    * Chart with prices after discount and before
+* Deleting carts
+* From to adding products within one cart and appending cart to the list
 
-## Wykorzystane technologie
+## Technologies
 * **Node.js** v.18.12.1
 * **React.js** v.18.2.0
-* Preprocesor **SASS** v.1.60.0
-* Biblioteka **react-router-dom** v.6.9.0
-* Biblioteka **Recharts** v.2.5.0
+* Pre-procesor **SASS** v.1.60.0
+* Library **react-router-dom** v.6.9.0
+* Library **Recharts** v.2.5.0
 
-## Uruchomienie
+## Run
 
-1. Sklonuj repozytorium do wybranego folderu
-2. Uruchom terminal i przejdź do folderu z projektem
-3. Zainstaluj potrzebne zależności przy użyciu komendy `npm install`
-4. Uruchom aplikacje komendą `npm start`
+1. Clone repo to chosen directory
+2. Run terminal and got to project directory
+3. Install dependencies with `npm install`
+4. Run app with `npm start`
